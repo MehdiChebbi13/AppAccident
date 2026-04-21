@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="18dp"
+    android:gravity="center_vertical"
+    android:minHeight="60dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <!-- Leading icon -->
+    <ImageView
+        android:id="@+id/pref_icon"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:scaleType="fitCenter"
+        android:importantForAccessibility="no"/>
+
+    <!-- Label -->
+    <TextView
+        android:id="@+id/pref_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="16dp"
+        android:textSize="15sp"
+        android:textColor="@color/color_on_surface"
+        android:fontFamily="sans-serif-medium"/>
+
+    <!-- Trailing chevron -->
+    <ImageView
+        android:id="@+id/pref_chevron"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:src="@drawable/ic_chevron_right"
+        android:tint="@color/color_outline"
+        android:scaleType="fitCenter"
+        android:importantForAccessibility="no"/>
+
+</LinearLayout>

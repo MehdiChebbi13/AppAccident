@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/profile_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_page_bg">
+
+    <!-- Bottom nav declared first so NestedScrollView can reference it via layout_above -->
+    <include
+        android:id="@+id/profile_bottom_nav"
+        layout="@layout/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
+
+    <!-- Top app bar -->
+    <LinearLayout
+        android:id="@+id/profile_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="14dp"
+        android:background="@color/color_surface_lowest"
+        android:elevation="4dp">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_shield"
+            android:tint="@color/color_primary"
+            android:scaleType="fitCenter"
+            android:importantForAccessibility="no"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:text="Guardian Way"
+            android:textSize="19sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_primary"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="-0.02"/>
+
+        <ImageView
+            android:id="@+id/settings_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_settings"
+            android:tint="@color/color_on_surface"
+            android:scaleType="fitCenter"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+    <!-- Scrollable content: constrained between app bar and bottom nav -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/profile_app_bar"
+        android:layout_above="@id/profile_bottom_nav"
+        android:clipToPadding="false"
+        android:fillViewport="false">
+
+        <LinearLayout
+            android:id="@+id/scroll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ======================================= -->
+            <!--  PROFILE HEADER CARD                    -->
+            <!-- ======================================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_card_white"
+                android:padding="20dp"
+                android:gravity="center_vertical">
+
+                <!-- Avatar + premium badge -->
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <!-- Circular profile placeholder -->
+                    <FrameLayout
+                        android:layout_width="88dp"
+                        android:layout_height="88dp"
+                        android:background="@drawable/bg_circle"
+                        android:backgroundTint="@color/color_primary_fixed">
+
+                        <ImageView
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_person"
+                            android:tint="@color/color_primary"
+                            android:scaleType="fitCenter"
+                            android:importantForAccessibility="no"/>
+                    </FrameLayout>
+
+                    <!-- Premium badge overlay -->
+                    <FrameLayout
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:background="@drawable/bg_circle"
+                        android:backgroundTint="@color/color_secondary_container"
+                        android:elevation="4dp">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_star"
+                            android:tint="@color/white"
+                            android:scaleType="fitCenter"
+                            android:importantForAccessibility="no"/>
+                    </FrameLayout>
+                </FrameLayout>
+
+                <!-- Name, since, safety score -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alexandre Dupont"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_on_surface"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Member since 2021"
+                        android:textSize="13sp"
+                        android:textColor="@color/color_on_surface_variant"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <!-- Safety Score pill -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@drawable/bg_pill"
+                        android:backgroundTint="@color/color_surface_low"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Score "
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/color_primary"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="98"
+                            android:textSize="19sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/color_on_surface"
+                            android:fontFamily="sans-serif-black"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="/100  "
+                            android:textSize="12sp"
+                            android:textColor="@color/color_outline"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="GOLD"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textAllCaps="true"
+                            android:textColor="@color/color_secondary"
+                            android:letterSpacing="0.06"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ======================================= -->
+            <!--  STATS CARDS ROW 1: Reports + Alerts    -->
+            <!-- ======================================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+
+                <!-- Reports card -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card_white"
+                    android:padding="16dp">
+
+                    <FrameLayout
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_icon_rounded"
+                        android:backgroundTint="@color/color_primary_fixed"
+                        android:layout_marginBottom="12dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_check_list"
+                            android:tint="@color/color_primary"
+                            android:scaleType="fitCenter"
+                            android:importantForAccessibility="no"/>
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="142"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_on_surface"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reports Made"
+                        android:textSize="12sp"
+                        android:textColor="@color/color_on_surface_variant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+
+                <View android:layout_width="12dp" android:layout_height="0dp"/>
+
+                <!-- Helpful Alerts card -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card_white"
+                    android:padding="16dp">
+
+                    <FrameLayout
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_icon_rounded"
+                        android:backgroundTint="@color/color_secondary_fixed"
+                        android:layout_marginBottom="12dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_campaign"
+                            android:tint="@color/color_secondary"
+                            android:scaleType="fitCenter"
+                            android:importantForAccessibility="no"/>
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="89"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_on_surface"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Helpful Alerts"
+                        android:textSize="12sp"
+                        android:textColor="@color/color_on_surface_variant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- STATS ROW 2: Safe Kilometres (full width) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_card_white"
+                android:padding="16dp"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical">
+
+                <FrameLayout
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_icon_rounded"
+                    android:backgroundTint="@color/color_surface_variant"
+                    android:layout_marginEnd="14dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_car"
+                        android:tint="@color/color_on_surface"
+                        android:scaleType="fitCenter"
+                        android:importantForAccessibility="no"/>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12,450"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_on_surface"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Safe Kilometres"
+                        android:textSize="12sp"
+                        android:textColor="@color/color_on_surface_variant"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ======================================= -->
+            <!--  RECENT ACTIVITY SECTION                -->
+            <!-- ======================================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="24dp">
+
+                <!-- Section header with filter Spinner -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_history"
+                        android:tint="@color/color_primary"
+                        android:scaleType="fitCenter"
+                        android:importantForAccessibility="no"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:text="Recent Activity"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_on_surface"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <!-- Filter Spinner -->
+                    <Spinner
+                        android:id="@+id/activity_filter_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:spinnerMode="dropdown"/>
+                </LinearLayout>
+
+                <!-- ListView inside card container -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card_container"
+                    android:padding="6dp">
+
+                    <ListView
+                        android:id="@+id/activity_list_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="@null"
+                        android:dividerHeight="0dp"
+                        android:nestedScrollingEnabled="false"
+                        android:scrollbars="none"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ======================================= -->
+            <!--  PREFERENCES SECTION                    -->
+            <!-- ======================================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp">
+
+                <!-- Section header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_tune"
+                        android:tint="@color/color_primary"
+                        android:scaleType="fitCenter"
+                        android:importantForAccessibility="no"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Preferences"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_on_surface"
+                        android:fontFamily="sans-serif-black"/>
+                </LinearLayout>
+
+                <!-- Preference ListView inside white card -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card_white">
+
+                    <ListView
+                        android:id="@+id/preference_list_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="@color/color_surface_low"
+                        android:dividerHeight="1dp"
+                        android:nestedScrollingEnabled="false"
+                        android:scrollbars="none"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

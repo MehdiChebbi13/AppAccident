@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Bottom Navigation -->
+    <color name="nav_active">#1E40AF</color>
+    <color name="nav_inactive">#94A3B8</color>
+    <color name="nav_active_bg">#80EFF6FF</color>
+    <color name="nav_surface">#F2FFFFFF</color>
+    <color name="nav_border">#1A000000</color>
+
+    <!-- App Theme (Guardian Way) -->
+    <color name="color_primary">#00327D</color>
+    <color name="color_secondary">#9F4200</color>
+    <color name="color_tertiary">#74000A</color>
+    <color name="color_on_surface">#1A1C1E</color>
+    <color name="color_on_surface_variant">#434653</color>
+    <color name="color_surface_lowest">#FFFFFF</color>
+    <color name="color_surface_low">#F3F3F6</color>
+    <color name="color_surface_container">#EEEEF0</color>
+    <color name="color_surface_high">#E8E8EA</color>
+    <color name="color_surface_highest">#E2E2E5</color>
+    <color name="color_surface_variant">#E2E2E5</color>
+    <color name="color_outline">#737784</color>
+    <color name="color_error">#BA1A1A</color>
+    <color name="color_error_container">#FFDAD6</color>
+    <color name="color_secondary_container">#FD6C00</color>
+    <color name="color_on_secondary_container">#562000</color>
+    <color name="color_primary_fixed">#DAE2FF</color>
+    <color name="color_secondary_fixed">#FFDBCB</color>
+    <color name="color_page_bg">#F9F9FC</color>
+</resources>
