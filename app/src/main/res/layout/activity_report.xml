@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/report_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_page_bg">
+
+    <!-- ============================================ -->
+    <!--  BOTTOM ACTION BAR (declared first for ref)  -->
+    <!-- ============================================ -->
+    <LinearLayout
+        android:id="@+id/report_bottom_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:background="@color/color_surface_lowest"
+        android:elevation="8dp">
+
+        <!-- Confirm & Report gradient button -->
+        <LinearLayout
+            android:id="@+id/btn_confirm_report"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_report_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirm &amp; Report"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_send"
+                android:tint="@color/white"
+                android:layout_marginStart="8dp"
+                android:scaleType="fitCenter"
+                android:importantForAccessibility="no"/>
+        </LinearLayout>
+
+        <!-- Disclaimer text -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="By submitting, you confirm that this information is accurate to the best of your knowledge."
+            android:textSize="10sp"
+            android:textColor="@color/color_outline"
+            android:gravity="center"
+            android:fontFamily="sans-serif-medium"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+    </LinearLayout>
+
+    <!-- ============================================ -->
+    <!--  TOP APP BAR                                  -->
+    <!-- ============================================ -->
+    <LinearLayout
+        android:id="@+id/report_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:background="#CCffffff"
+        android:elevation="4dp">
+
+        <!-- Back button -->
+        <FrameLayout
+            android:id="@+id/btn_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_back"
+                android:tint="@color/color_primary"
+                android:scaleType="fitCenter"
+                android:importantForAccessibility="no"/>
+        </FrameLayout>
+
+        <!-- Title (centred using weight) -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Guardian Way"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_primary"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="-0.02"/>
+
+        <!-- Top-right submit text-button -->
+        <TextView
+            android:id="@+id/btn_top_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_primary"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:background="@drawable/bg_pill"
+            android:backgroundTint="@color/color_primary_fixed"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"/>
+    </LinearLayout>
+
+    <!-- ============================================ -->
+    <!--  SCROLLABLE CONTENT                          -->
+    <!-- ============================================ -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/report_app_bar"
+        android:layout_above="@id/report_bottom_action"
+        android:clipToPadding="false"
+        android:fillViewport="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ===================================== -->
+            <!--  1. INCIDENT SUMMARY CARD             -->
+            <!-- ===================================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_card_white"
+                android:padding="18dp"
+                android:gravity="center_vertical|top">
+
+                <!-- Icon in light-red circle background -->
+                <FrameLayout
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_icon_rounded"
+                    android:backgroundTint="@color/color_incident_bg">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_warning"
+                        android:tint="@color/color_tertiary"
+                        android:scaleType="fitCenter"
+                        android:importantForAccessibility="no"/>
+                </FrameLayout>
+
+                <!-- Category info -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="14dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SELECTED CATEGORY"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:textColor="@color/color_outline"
+                        android:letterSpacing="0.12"
+                        android:layout_marginBottom="4dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Major Accident"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_tertiary"
+                        android:fontFamily="sans-serif-black"
+                        android:lineSpacingMultiplier="1.1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Impact involving multiple vehicles or injuries."
+                        android:textSize="13sp"
+                        android:textColor="@color/color_on_surface_variant"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===================================== -->
+            <!--  2. VISUAL EVIDENCE                   -->
+            <!-- ===================================== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Visual Evidence"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_primary"
+                android:textAllCaps="true"
+                android:letterSpacing="0.1"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="2dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Add Photo -->
+                <LinearLayout
+                    android:id="@+id/btn_add_photo"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_dashed_border"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:layerType="software">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_camera"
+                        android:tint="@color/color_on_surface_variant"
+                        android:scaleType="fitCenter"
+                        android:importantForAccessibility="no"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add Photo"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_on_surface_variant"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+
+                <View android:layout_width="10dp" android:layout_height="0dp"/>
+
+                <!-- Add Video -->
+                <LinearLayout
+                    android:id="@+id/btn_add_video"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@drawable/bg_dashed_border"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:layerType="software">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_videocam"
+                        android:tint="@color/color_on_surface_variant"
+                        android:scaleType="fitCenter"
+                        android:importantForAccessibility="no"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add Video"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_on_surface_variant"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===================================== -->
+            <!--  3. DESCRIPTION                       -->
+            <!-- ===================================== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_primary"
+                android:textAllCaps="true"
+                android:letterSpacing="0.1"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="2dp"/>
+
+            <!-- EditText + char counter -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/description_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="128dp"
+                    android:background="@drawable/bg_edit_text"
+                    android:padding="14dp"
+                    android:paddingBottom="28dp"
+                    android:hint="Briefly describe what happened..."
+                    android:textColorHint="@color/color_outline"
+                    android:textColor="@color/color_on_surface"
+                    android:textSize="14sp"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:gravity="top|start"
+                    android:maxLength="200"
+                    android:scrollbars="none"/>
+
+                <TextView
+                    android:id="@+id/char_counter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="0/200"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_outline"
+                    android:letterSpacing="0.1"/>
+            </FrameLayout>
+
+            <!-- ===================================== -->
+            <!--  4. INCIDENT LOCATION                 -->
+            <!-- ===================================== -->
+
+            <!-- Section header with Edit button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Incident Location"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/color_primary"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.1"
+                    android:layout_marginStart="2dp"/>
+
+                <LinearLayout
+                    android:id="@+id/btn_edit_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="6dp"
+                    android:paddingEnd="6dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_edit_location"
+                        android:tint="@color/color_primary"
+                        android:scaleType="fitCenter"
+                        android:importantForAccessibility="no"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="Edit"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_primary"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Map card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card_white"
+                android:clipToOutline="true"
+                android:elevation="2dp">
+
+                <!-- Map placeholder area -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="#CBD5E1">
+
+                    <!-- Street grid lines (horizontal) -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="center"
+                        android:background="#BFCFE8"/>
+
+                    <!-- Street grid lines (vertical) approximation -->
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="#BFCFE8"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="40dp"
+                        android:background="#BFCFE8"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="40dp"
+                        android:background="#BFCFE8"/>
+
+                    <!-- Location pin centred -->
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_location_on"
+                        android:tint="@color/color_tertiary"
+                        android:scaleType="fitCenter"
+                        android:importantForAccessibility="no"/>
+                </FrameLayout>
+
+                <!-- Address row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="14dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_near_me"
+                        android:tint="@color/color_outline"
+                        android:scaleType="fitCenter"
+                        android:importantForAccessibility="no"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Intersection of 5th Ave &amp; Broadway St."
+                        android:textSize="14sp"
+                        android:textColor="@color/color_on_surface"
+                        android:fontFamily="sans-serif-medium"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ===================================== -->
+            <!--  5. SEVERITY SELECTOR                 -->
+            <!-- ===================================== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Severity Level"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/color_primary"
+                android:textAllCaps="true"
+                android:letterSpacing="0.1"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="2dp"/>
+
+            <!-- 3-button severity row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <!-- LOW -->
+                <LinearLayout
+                    android:id="@+id/btn_severity_low"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <View
+                        android:id="@+id/dot_low"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:background="@drawable/bg_circle"
+                        android:layout_marginBottom="6dp"/>
+
+                    <TextView
+                        android:id="@+id/label_low"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LOW"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.04"/>
+                </LinearLayout>
+
+                <View android:layout_width="8dp" android:layout_height="0dp"/>
+
+                <!-- MEDIUM -->
+                <LinearLayout
+                    android:id="@+id/btn_severity_medium"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <View
+                        android:id="@+id/dot_medium"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:background="@drawable/bg_circle"
+                        android:layout_marginBottom="6dp"/>
+
+                    <TextView
+                        android:id="@+id/label_medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MEDIUM"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.04"/>
+                </LinearLayout>
+
+                <View android:layout_width="8dp" android:layout_height="0dp"/>
+
+                <!-- HIGH -->
+                <LinearLayout
+                    android:id="@+id/btn_severity_high"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <View
+                        android:id="@+id/dot_high"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:background="@drawable/bg_circle"
+                        android:layout_marginBottom="6dp"/>
+
+                    <TextView
+                        android:id="@+id/label_high"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HIGH"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.04"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

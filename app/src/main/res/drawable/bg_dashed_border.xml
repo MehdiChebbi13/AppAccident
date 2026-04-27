@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Note: requires android:layerType="software" on the view to render dashes correctly -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="12dp"/>
+    <solid android:color="@color/color_surface_highest"/>
+    <stroke
+        android:width="2dp"
+        android:color="@color/color_outline_variant"
+        android:dashWidth="8dp"
+        android:dashGap="5dp"/>
+</shape>

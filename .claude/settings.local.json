@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import json; nb=json.load\\(open\\('TP-introImagesSUJET.ipynb'\\)\\); print\\(json.dumps\\(nb['metadata'], indent=2\\)\\); print\\('nbformat:', nb['nbformat']\\); print\\('nbformat_minor:', nb['nbformat_minor']\\); print\\('num cells:', len\\(nb['cells']\\)\\)\")",
+      "Bash(python -c ' *)",
+      "Bash(python build_correction.py)",
+      "Bash(python build_qcm.py)"
+    ]
+  }
+}

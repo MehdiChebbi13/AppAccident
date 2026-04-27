@@ -24,6 +24,14 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="false"/>
+
+        <activity
+            android:name=".ReportActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".ui.ControlActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

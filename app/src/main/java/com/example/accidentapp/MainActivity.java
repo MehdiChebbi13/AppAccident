@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Set click listeners
         navHome.setOnClickListener(v -> setActiveTab(0));
-        navReport.setOnClickListener(v -> setActiveTab(1));
+        navReport.setOnClickListener(v -> {
+            startActivity(new Intent(this, ReportActivity.class));
+        });
         navAlerts.setOnClickListener(v -> setActiveTab(2));
         navProfile.setOnClickListener(v -> {
             startActivity(new Intent(this, ProfileActivity.class));

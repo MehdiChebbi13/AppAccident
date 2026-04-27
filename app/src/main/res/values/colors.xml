@@ -12,8 +12,10 @@
 
     <!-- App Theme (Guardian Way) -->
     <color name="color_primary">#00327D</color>
+    <color name="color_primary_container">#0047AB</color>
     <color name="color_secondary">#9F4200</color>
     <color name="color_tertiary">#74000A</color>
+    <color name="color_tertiary_container">#9F0012</color>
     <color name="color_on_surface">#1A1C1E</color>
     <color name="color_on_surface_variant">#434653</color>
     <color name="color_surface_lowest">#FFFFFF</color>
@@ -23,6 +25,7 @@
     <color name="color_surface_highest">#E2E2E5</color>
     <color name="color_surface_variant">#E2E2E5</color>
     <color name="color_outline">#737784</color>
+    <color name="color_outline_variant">#C3C6D5</color>
     <color name="color_error">#BA1A1A</color>
     <color name="color_error_container">#FFDAD6</color>
     <color name="color_secondary_container">#FD6C00</color>
@@ -30,4 +33,8 @@
     <color name="color_primary_fixed">#DAE2FF</color>
     <color name="color_secondary_fixed">#FFDBCB</color>
     <color name="color_page_bg">#F9F9FC</color>
+
+    <!-- Report page specific -->
+    <!-- Tertiary-container at 10% opacity: ARGB #1A + 9F0012 -->
+    <color name="color_incident_bg">#1A9F0012</color>
 </resources>
